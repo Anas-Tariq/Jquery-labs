@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Box Animator</title>
+        <style type="text/css">
+            .box,
+            .box1 {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                background-color: red;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".box").animate(
+                    {
+                        left: "50%",
+                        top: "3%",
+                        width: "200px",
+                        height: "200px",
+                    },
+                    2000,
+                    function () {
+                        $(this).css("background", "yellow");
+                    }
+                );
+                $(".box").animate(
+                    {
+                        top: "70%",
+                        width: "100px",
+                        height: "100px",
+                    },
+                    2000,
+                    function () {
+                        $(this).css("background", "blue");
+                    }
+                );
+                $(".box").animate(
+                    {
+                        left: "0",
+                        width: "200px",
+                        height: "200px",
+                        backgroundColor: "blue",
+                    },
+                    2000,
+                    function () {
+                        $(this).css("background", "green");
+                    }
+                );
+                $(".box").animate(
+                    {
+                        top: "0",
+                        width: "100px",
+                        height: "100px",
+                        backgroundColor: "blue",
+                    },
+                    2000,
+                    function () {
+                        $(this).css("background", "red");
+                    }
+                );
+                $.fn.roundBorder = function (options) {
+                    //options =>user parameter=>object
+                    //object=>$.extend({//default},opthions)
+                    var rounded = $.extend(
+                        {
+                            borderRadius: "50%",
+                        },
+                        options
+                    );
+
+                    //css
+
+                    return this.css({
+                        borderRadius: rounded.borderRadius,
+                    });
+                };
+                $(".box").roundBorder();
+            });
+        </script>
+    </head>
+    <body>
+        <div class="box"></div>
+        <div class="box1"></div>
+    </body>
+</html>
